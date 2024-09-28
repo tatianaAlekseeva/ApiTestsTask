@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    implementation 'org.testifyproject.junit5:junit5:1.0.6'
+    implementation 'io.rest-assured:rest-assured:5.5.0'
+    implementation 'org.hamcrest:hamcrest-library:3.0'
+    implementation 'com.google.code.gson:gson:2.11.0'
+    implementation 'com.beust:jcommander:1.82'
+    implementation 'ch.qos.logback:logback-classic:1.4.12'
+    implementation 'net.joshka:junit-json-params:5.10.2-r0'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+tasks.register('runCreateUserPositiveTagTests', Test) {
+    useJUnitPlatform {
+        includeTags 'create_user_positive'
+    }
+}
+
+tasks.register('runGetUsersTagTests', Test) {
+    useJUnitPlatform {
+        includeTags 'get_users'
+    }
+}
+
+tasks.register('runCreateUserNegativeTagTests', Test) {
+    useJUnitPlatform {
+        includeTags 'create_user_negative'
+    }
+}
